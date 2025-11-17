@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MaoNaMassa.Application\MaoNaMassa.Application.csproj" />
+    <ProjectReference Include="..\MaoNaMassa.Infrastructure\MaoNaMassa.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
