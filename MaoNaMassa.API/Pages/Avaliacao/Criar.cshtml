@@ -1,0 +1,94 @@
+@page "/avaliacao/criar"
+@model MaoNaMassa.API.Pages.Avaliacao.CriarModel
+@{
+    ViewData["Title"] = "Avaliar Serviço";
+}
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="bi bi-star me-2"></i>Avaliar Serviço</h4>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(Model.MensagemErro))
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            <i class="bi bi-exclamation-triangle me-2"></i>@Model.MensagemErro
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.MensagemSucesso))
+                    {
+                        <div class="alert alert-success" role="alert">
+                            <i class="bi bi-check-circle me-2"></i>@Model.MensagemSucesso
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.ViewModel.ServicoTitulo))
+                    {
+                        <div class="alert alert-info mb-4">
+                            <h5><i class="bi bi-briefcase me-2"></i>@Model.ViewModel.ServicoTitulo</h5>
+                            @if (!string.IsNullOrEmpty(Model.ViewModel.ProfissionalNome))
+                            {
+                                <p class="mb-0"><strong>Profissional:</strong> @Model.ViewModel.ProfissionalNome</p>
+                            }
+                        </div>
+                    }
+
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <input type="hidden" asp-for="ViewModel.ServicoId" />
+
+                        <div class="mb-3">
+                            <label asp-for="ViewModel.UsuarioId" class="form-label"></label>
+                            <input asp-for="ViewModel.UsuarioId" type="text" class="form-control" placeholder="Digite o ID do usuário (GUID)" />
+                            <span asp-validation-for="ViewModel.UsuarioId" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ViewModel.ServicoId" class="form-label">ID do Serviço</label>
+                            <input asp-for="ViewModel.ServicoId" type="text" class="form-control" placeholder="Digite o ID do serviço (GUID)" />
+                            <span asp-validation-for="ViewModel.ServicoId" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ViewModel.Nota" class="form-label"></label>
+                            <select asp-for="ViewModel.Nota" class="form-select">
+                                <option value="">Selecione uma nota</option>
+                                <option value="1">1 - Muito Ruim</option>
+                                <option value="2">2 - Ruim</option>
+                                <option value="3">3 - Regular</option>
+                                <option value="4">4 - Bom</option>
+                                <option value="5">5 - Excelente</option>
+                            </select>
+                            <span asp-validation-for="ViewModel.Nota" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ViewModel.Comentario" class="form-label"></label>
+                            <textarea asp-for="ViewModel.Comentario" class="form-control" rows="4" placeholder="Deixe um comentário sobre o serviço (opcional)..."></textarea>
+                            <span asp-validation-for="ViewModel.Comentario" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-star-fill me-2"></i>Enviar Avaliação
+                            </button>
+                            <a href="/Servicos" class="btn btn-secondary">
+                                <i class="bi bi-x-lg me-2"></i>Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

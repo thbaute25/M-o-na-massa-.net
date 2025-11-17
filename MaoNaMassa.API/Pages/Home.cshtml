@@ -1,0 +1,81 @@
+@page "/Home"
+@model MaoNaMassa.API.Pages.HomeModel
+@{
+    ViewData["Title"] = "Início";
+}
+
+<div class="text-center py-5 fade-in">
+    <div class="mb-4">
+        <i class="bi bi-tools display-1 text-primary"></i>
+    </div>
+    <h1 class="display-4 fw-bold text-primary mb-3">Bem-vindo ao Mão na Massa</h1>
+    <p class="lead text-muted mb-4">Plataforma para preparar trabalhadores para o futuro do trabalho</p>
+    <hr class="my-4 w-50 mx-auto">
+    
+    <div class="row mt-5">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">📚 Cursos</h5>
+                    <p class="card-text">Aprenda novas habilidades através de cursos práticos e diretos.</p>
+                    <a href="/Cursos" class="btn btn-primary">Ver Cursos</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">🛠️ Serviços</h5>
+                    <p class="card-text">Encontre profissionais qualificados para seus projetos.</p>
+                    <a href="/Servicos" class="btn btn-primary">Buscar Serviços</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">👥 Profissionais</h5>
+                    <p class="card-text">Conheça profissionais certificados e avaliados.</p>
+                    <a href="/Profissionais" class="btn btn-primary">Ver Profissionais</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5 pt-5 border-top">
+        <h3 class="text-center mb-4">
+            <i class="bi bi-question-circle me-2 text-primary"></i>Como Funciona
+        </h3>
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <div class="text-center">
+                    <div class="fs-1 mb-3">1️⃣</div>
+                    <h5>Aprenda</h5>
+                    <p>Faça cursos práticos e diretos</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="text-center">
+                    <div class="fs-1 mb-3">2️⃣</div>
+                    <h5>Certifique-se</h5>
+                    <p>Obtenha certificados digitais</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="text-center">
+                    <div class="fs-1 mb-3">3️⃣</div>
+                    <h5>Perfil</h5>
+                    <p>Crie seu perfil profissional</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="text-center">
+                    <div class="fs-1 mb-3">4️⃣</div>
+                    <h5>Trabalhe</h5>
+                    <p>Ofereça serviços e ganhe</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

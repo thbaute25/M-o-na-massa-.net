@@ -1,0 +1,63 @@
+@page "/profissional/criar"
+@model MaoNaMassa.API.Pages.Profissional.CriarModel
+@{
+    ViewData["Title"] = "Criar Perfil Profissional";
+}
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="bi bi-person-badge me-2"></i>Criar Perfil Profissional</h4>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(Model.MensagemErro))
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            <i class="bi bi-exclamation-triangle me-2"></i>@Model.MensagemErro
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.MensagemSucesso))
+                    {
+                        <div class="alert alert-success" role="alert">
+                            <i class="bi bi-check-circle me-2"></i>@Model.MensagemSucesso
+                        </div>
+                    }
+
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="ViewModel.UsuarioId" class="form-label"></label>
+                            <input asp-for="ViewModel.UsuarioId" type="text" class="form-control" placeholder="Digite o ID do usuário (GUID)" />
+                            <small class="form-text text-muted">O usuário deve existir e ser do tipo "Profissional" ou "Aprendiz".</small>
+                            <span asp-validation-for="ViewModel.UsuarioId" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ViewModel.Descricao" class="form-label"></label>
+                            <textarea asp-for="ViewModel.Descricao" class="form-control" rows="6" placeholder="Descreva suas habilidades, experiência e especialidades..."></textarea>
+                            <span asp-validation-for="ViewModel.Descricao" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-check-lg me-2"></i>Criar Perfil
+                            </button>
+                            <a href="/Profissionais" class="btn btn-secondary">
+                                <i class="bi bi-x-lg me-2"></i>Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

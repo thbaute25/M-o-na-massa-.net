@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Mão na Massa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="/">
+                    <i class="bi bi-tools fs-3 me-2"></i>
+                    <span class="fw-bold">Mão na Massa</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["page"]?.ToString() == "/Home" ? "active" : "")" 
+                               href="/Home">
+                                <i class="bi bi-house-door me-1"></i>Início
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["page"]?.ToString() == "/Cursos" ? "active" : "")" 
+                               href="/Cursos">
+                                <i class="bi bi-book me-1"></i>Cursos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["page"]?.ToString() == "/Servicos" ? "active" : "")" 
+                               href="/Servicos">
+                                <i class="bi bi-briefcase me-1"></i>Serviços
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["page"]?.ToString() == "/Profissionais" ? "active" : "")" 
+                               href="/Profissionais">
+                                <i class="bi bi-people me-1"></i>Profissionais
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["page"]?.ToString() == "/buscar" ? "active" : "")" 
+                               href="/buscar">
+                                <i class="bi bi-search me-1"></i>Buscar
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarCriarDropdown" role="button" 
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-plus-circle me-1"></i>Criar
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarCriarDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="/usuario/criar">
+                                        <i class="bi bi-person-plus me-2"></i>Usuário
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/curso/criar">
+                                        <i class="bi bi-book me-2"></i>Curso
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/servico/criar">
+                                        <i class="bi bi-briefcase me-2"></i>Serviço
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/profissional/criar">
+                                        <i class="bi bi-person-badge me-2"></i>Perfil Profissional
+                                    </a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item" href="/quiz/responder">
+                                        <i class="bi bi-question-circle me-2"></i>Responder Quiz
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/avaliacao/criar">
+                                        <i class="bi bi-star me-2"></i>Avaliar Serviço
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-gear me-1"></i>API
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="/swagger" target="_blank">
+                                        <i class="bi bi-code-square me-2"></i>Swagger UI
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/api/health" target="_blank">
+                                        <i class="bi bi-heart-pulse me-2"></i>Health Check
+                                    </a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item" href="/swagger" target="_blank">
+                                        <i class="bi bi-file-earmark-text me-2"></i>Documentação
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="flex-shrink-0">
+        @RenderBody()
+    </main>
+
+    <footer class="footer mt-auto py-4 bg-light border-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5 class="text-primary">
+                        <i class="bi bi-tools me-2"></i>Mão na Massa
+                    </h5>
+                    <p class="text-muted small">
+                        Preparando trabalhadores para o futuro do trabalho através de aprendizado acessível, 
+                        certificação e conexão com oportunidades reais de renda.
+                    </p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h6 class="fw-bold">Links Rápidos</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="/Home" class="text-decoration-none text-muted small">
+                            <i class="bi bi-arrow-right me-1"></i>Início</a></li>
+                        <li><a href="/Cursos" class="text-decoration-none text-muted small">
+                            <i class="bi bi-arrow-right me-1"></i>Cursos</a></li>
+                        <li><a href="/Servicos" class="text-decoration-none text-muted small">
+                            <i class="bi bi-arrow-right me-1"></i>Serviços</a></li>
+                        <li><a href="/Profissionais" class="text-decoration-none text-muted small">
+                            <i class="bi bi-arrow-right me-1"></i>Profissionais</a></li>
+                        <li><a href="/buscar" class="text-decoration-none text-muted small">
+                            <i class="bi bi-arrow-right me-1"></i>Buscar</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="fw-bold">API</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="/swagger" target="_blank" class="text-decoration-none text-muted small">
+                            <i class="bi bi-code-square me-1"></i>Swagger UI</a></li>
+                        <li><a href="/api/health" target="_blank" class="text-decoration-none text-muted small">
+                            <i class="bi bi-heart-pulse me-1"></i>Health Check</a></li>
+                        <li><a href="/api" class="text-decoration-none text-muted small">
+                            <i class="bi bi-link-45deg me-1"></i>API Base</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-3">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="text-muted small mb-0">
+                        &copy; @DateTime.Now.Year - Mão na Massa. 
+                        Preparando trabalhadores para o futuro do trabalho.
+                    </p>
+                    <p class="text-muted small mt-2">
+                        <i class="bi bi-github me-1"></i>
+                        <a href="https://github.com" target="_blank" class="text-decoration-none text-muted">GitHub</a> | 
+                        <i class="bi bi-envelope me-1"></i>
+                        <a href="mailto:contato@maonamassa.com" class="text-decoration-none text-muted">Contato</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
+            crossorigin="anonymous"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

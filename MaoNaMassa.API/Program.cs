@@ -5,21 +5,27 @@ using MaoNaMassa.Domain.Interfaces;
 using MaoNaMassa.Infrastructure.Data;
 using MaoNaMassa.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.InMemory;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
 builder.Services.AddControllers();
+builder.Services.AddRazorPages(); // Adicionar suporte a Razor Pages
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Database Context - Usando In-Memory para testes (sem necessidade de banco real)
-// Configurado para não falhar se o banco não existir
+// Database Context - Usando SQLite
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    options.UseInMemoryDatabase("MaoNaMassaDb");
-    options.EnableSensitiveDataLogging(); // Apenas para desenvolvimento
+    options.UseSqlite(connectionString, sqlOptions => 
+        sqlOptions.MigrationsAssembly("MaoNaMassa.Infrastructure"));
+    
+    // Apenas para desenvolvimento
+    if (builder.Environment.IsDevelopment())
+    {
+        options.EnableSensitiveDataLogging();
+    }
 });
 
 // Repositórios
@@ -72,8 +78,12 @@ app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 // Desabilitar HTTPS redirection temporariamente para facilitar testes
 // app.UseHttpsRedirection();
 app.UseCors("AllowAll");
+app.UseStaticFiles(); // Habilitar arquivos estáticos (CSS, JS, imagens)
 app.UseRouting();
 app.UseAuthorization();
-app.MapControllers();
+
+// Configurar rotas padrão e personalizadas
+app.MapRazorPages(); // Mapear Razor Pages (rotas: /, /Home, /Cursos, /Servicos, /Profissionais)
+app.MapControllers(); // Mapear API Controllers (rotas: /api/*)
 
 app.Run();

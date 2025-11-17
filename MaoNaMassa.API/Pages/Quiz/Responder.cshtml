@@ -1,0 +1,79 @@
+@page "/quiz/responder"
+@model MaoNaMassa.API.Pages.Quiz.ResponderModel
+@{
+    ViewData["Title"] = "Responder Quiz";
+}
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="bi bi-question-circle me-2"></i>Responder Quiz</h4>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(Model.MensagemErro))
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            <i class="bi bi-exclamation-triangle me-2"></i>@Model.MensagemErro
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.MensagemSucesso))
+                    {
+                        <div class="alert alert-success" role="alert">
+                            <i class="bi bi-check-circle me-2"></i>@Model.MensagemSucesso
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.ViewModel.Pergunta))
+                    {
+                        <div class="alert alert-info mb-4">
+                            <h5><i class="bi bi-book me-2"></i>@Model.ViewModel.CursoTitulo</h5>
+                            <p class="mb-0"><strong>Pergunta:</strong> @Model.ViewModel.Pergunta</p>
+                        </div>
+                    }
+
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <input type="hidden" asp-for="ViewModel.QuizId" />
+                        <input type="hidden" asp-for="ViewModel.UsuarioId" />
+
+                        <div class="mb-3">
+                            <label asp-for="ViewModel.UsuarioId" class="form-label">ID do Usuário</label>
+                            <input asp-for="ViewModel.UsuarioId" type="text" class="form-control" placeholder="Digite o ID do usuário (GUID)" />
+                            <span asp-validation-for="ViewModel.UsuarioId" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ViewModel.QuizId" class="form-label">ID do Quiz</label>
+                            <input asp-for="ViewModel.QuizId" type="text" class="form-control" placeholder="Digite o ID do quiz (GUID)" />
+                            <span asp-validation-for="ViewModel.QuizId" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ViewModel.Resposta" class="form-label"></label>
+                            <textarea asp-for="ViewModel.Resposta" class="form-control" rows="4" placeholder="Digite sua resposta..."></textarea>
+                            <span asp-validation-for="ViewModel.Resposta" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-send me-2"></i>Enviar Resposta
+                            </button>
+                            <a href="/Cursos" class="btn btn-secondary">
+                                <i class="bi bi-x-lg me-2"></i>Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

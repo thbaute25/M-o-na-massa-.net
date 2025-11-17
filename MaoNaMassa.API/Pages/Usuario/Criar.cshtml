@@ -1,0 +1,92 @@
+@page "/usuario/criar"
+@model MaoNaMassa.API.Pages.Usuario.CriarModel
+@{
+    ViewData["Title"] = "Criar Usuário";
+}
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="bi bi-person-plus me-2"></i>Criar Novo Usuário</h4>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(Model.MensagemErro))
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            <i class="bi bi-exclamation-triangle me-2"></i>@Model.MensagemErro
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.MensagemSucesso))
+                    {
+                        <div class="alert alert-success" role="alert">
+                            <i class="bi bi-check-circle me-2"></i>@Model.MensagemSucesso
+                        </div>
+                    }
+
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="ViewModel.Nome" class="form-label"></label>
+                            <input asp-for="ViewModel.Nome" class="form-control" />
+                            <span asp-validation-for="ViewModel.Nome" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ViewModel.Email" class="form-label"></label>
+                            <input asp-for="ViewModel.Email" type="email" class="form-control" />
+                            <span asp-validation-for="ViewModel.Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ViewModel.Senha" class="form-label"></label>
+                            <input asp-for="ViewModel.Senha" type="password" class="form-control" />
+                            <span asp-validation-for="ViewModel.Senha" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ViewModel.Cidade" class="form-label"></label>
+                            <input asp-for="ViewModel.Cidade" class="form-control" />
+                            <span asp-validation-for="ViewModel.Cidade" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ViewModel.AreaInteresse" class="form-label"></label>
+                            <input asp-for="ViewModel.AreaInteresse" class="form-control" placeholder="Ex: Elétrica, Pintura, Encanamento" />
+                            <span asp-validation-for="ViewModel.AreaInteresse" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ViewModel.TipoUsuario" class="form-label"></label>
+                            <select asp-for="ViewModel.TipoUsuario" class="form-select">
+                                <option value="">Selecione um tipo</option>
+                                <option value="Aprendiz">Aprendiz</option>
+                                <option value="Profissional">Profissional</option>
+                                <option value="Cliente">Cliente</option>
+                                <option value="Empresa">Empresa</option>
+                            </select>
+                            <span asp-validation-for="ViewModel.TipoUsuario" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-check-lg me-2"></i>Criar Usuário
+                            </button>
+                            <a href="/Home" class="btn btn-secondary">
+                                <i class="bi bi-x-lg me-2"></i>Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

@@ -13,7 +13,7 @@
 
 ### 1. Criar o Banco de Dados
 
-O projeto está configurado para usar SQL Server, mas o banco ainda não foi criado. Você precisa:
+O projeto está configurado para usar **SQLite**. O banco de dados será criado automaticamente ao executar as migrations:
 
 ```bash
 # Instalar EF Core Tools (se ainda não tiver)
@@ -22,21 +22,16 @@ dotnet tool install --global dotnet-ef
 # Criar a migration inicial
 dotnet ef migrations add InitialCreate --project MaoNaMassa.Infrastructure --startup-project MaoNaMassa.API
 
-# Aplicar a migration ao banco
+# Aplicar a migration ao banco (cria o arquivo MaoNaMassaDb.db)
 dotnet ef database update --project MaoNaMassa.Infrastructure --startup-project MaoNaMassa.API
 ```
 
-**OU** usar In-Memory Database para testes (já configurado no código, mas comentado):
-
-```csharp
-// No Program.cs, trocar:
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
-
-// Por:
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseInMemoryDatabase("MaoNaMassaDb"));
+**OU** use o script automatizado:
+```powershell
+.\setup-database.ps1
 ```
+
+O arquivo `MaoNaMassaDb.db` será criado na pasta `MaoNaMassa.API/`.
 
 ### 2. Implementar Repositórios
 

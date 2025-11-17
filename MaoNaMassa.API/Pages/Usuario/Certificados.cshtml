@@ -1,0 +1,52 @@
+@page "/usuario/{id:guid}/certificados"
+@model MaoNaMassa.API.Pages.Usuario.CertificadosModel
+@{
+    ViewData["Title"] = "Certificados do Usuário";
+}
+
+<div class="container py-4">
+    <div class="row">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home">Início</a></li>
+                    <li class="breadcrumb-item"><a href="/usuario/@Model.UsuarioId/perfil">Perfil</a></li>
+                    <li class="breadcrumb-item active">Certificados</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Certificados do Usuário</h2>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <h5>🏆 Certificados do Usuário ID: @Model.UsuarioId</h5>
+                        <p>Use a API para buscar os certificados do usuário.</p>
+                        <p><strong>Endpoint:</strong> <code>GET /api/certificados/usuario/@Model.UsuarioId</code></p>
+                        <a href="/swagger#/Certificados/Certificados_GetByUsuarioId" target="_blank" class="btn btn-primary btn-sm">Testar no Swagger</a>
+                    </div>
+
+                    <div class="mt-3">
+                        <h5>Endpoints Relacionados:</h5>
+                        <ul>
+                            <li><code>GET /api/certificados/usuario/@Model.UsuarioId</code> - Listar certificados</li>
+                            <li><code>GET /api/certificados/{id}</code> - Detalhes de um certificado</li>
+                            <li><code>GET /api/certificados/codigo/{codigo}</code> - Buscar por código</li>
+                            <li><code>POST /api/certificados/completar-curso?usuarioId=@Model.UsuarioId</code> - Completar curso e gerar certificado</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a href="/usuario/@Model.UsuarioId/perfil" class="btn btn-secondary">Voltar para Perfil</a>
+    </div>
+</div>
+
