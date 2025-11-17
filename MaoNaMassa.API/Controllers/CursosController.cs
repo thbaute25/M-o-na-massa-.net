@@ -129,23 +129,31 @@ public class CursosController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<CursoResponse>> Create([FromBody] CriarCursoRequest request)
     {
-        var curso = new Curso(
-            request.Titulo,
-            request.Descricao,
-            request.Area,
-            request.Nivel);
+        try
+        {
+            var curso = new Curso(
+                request.Titulo,
+                request.Descricao,
+                request.Area,
+                request.Nivel);
 
-        var cursoCriado = await _repository.CreateAsync(curso);
-        var response = MapToResponse(cursoCriado);
+            var cursoCriado = await _repository.CreateAsync(curso);
+            var response = MapToResponse(cursoCriado);
 
-        var links = HateoasHelper.CreateResourceLinks(
-            $"{Request.Scheme}://{Request.Host}/api/cursos",
-            cursoCriado.Id);
+            var links = HateoasHelper.CreateResourceLinks(
+                $"{Request.Scheme}://{Request.Host}/api/cursos",
+                cursoCriado.Id);
 
-        return CreatedAtAction(
-            nameof(GetById),
-            new { id = cursoCriado.Id },
-            new { data = response, links });
+            return CreatedAtAction(
+                nameof(GetById),
+                new { id = cursoCriado.Id },
+                new { data = response, links });
+        }
+        catch (Exception ex)
+        {
+            // Log do erro
+            return StatusCode(500, new { error = ex.Message, details = ex.ToString() });
+        }
     }
 
     /// <summary>

@@ -43,15 +43,27 @@ public class CriarModel : PageModel
 
             await _cursoRepository.CreateAsync(curso);
 
-            MensagemSucesso = $"Curso '{curso.Titulo}' criado com sucesso! ID: {curso.Id}";
-            ModelState.Clear();
-            ViewModel = new CriarCursoViewModel();
-            
-            return Page();
+            // Redirecionar para a página de detalhes do curso criado com mensagem de sucesso
+            return RedirectToPage("/Curso/Detalhes", new { id = curso.Id, criado = true });
         }
         catch (Exception ex)
         {
-            MensagemErro = ex.Message;
+            // Capturar exceção interna para diagnóstico
+            var mensagemErro = ex.Message;
+            if (ex.InnerException != null)
+            {
+                mensagemErro += $" | Detalhes: {ex.InnerException.Message}";
+            }
+            
+            MensagemErro = mensagemErro;
+            
+            // Log do erro completo para diagnóstico
+            Console.WriteLine($"Erro ao criar curso: {ex}");
+            if (ex.InnerException != null)
+            {
+                Console.WriteLine($"Exceção interna: {ex.InnerException}");
+            }
+            
             return Page();
         }
     }

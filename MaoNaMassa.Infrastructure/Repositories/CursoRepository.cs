@@ -24,10 +24,18 @@ public class CursoRepository : ICursoRepository
 
     public async Task<IEnumerable<Curso>> GetAllAsync()
     {
-        return await _context.Cursos
-            .Include(c => c.Aulas)
-            .Include(c => c.Quizzes)
-            .ToListAsync();
+        try
+        {
+            return await _context.Cursos
+                .AsNoTracking()
+                .ToListAsync();
+        }
+        catch (Exception ex)
+        {
+            // Log do erro (em produção, usar ILogger)
+            Console.WriteLine($"Erro ao buscar cursos: {ex.Message}");
+            return new List<Curso>();
+        }
     }
 
     public async Task<IEnumerable<Curso>> GetByAreaAsync(string area)
@@ -50,9 +58,23 @@ public class CursoRepository : ICursoRepository
 
     public async Task<Curso> CreateAsync(Curso curso)
     {
-        _context.Cursos.Add(curso);
-        await _context.SaveChangesAsync();
-        return curso;
+        try
+        {
+            _context.Cursos.Add(curso);
+            await _context.SaveChangesAsync();
+            return curso;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao criar curso no repositório: {ex.Message}");
+            Console.WriteLine($"Stack trace: {ex.StackTrace}");
+            if (ex.InnerException != null)
+            {
+                Console.WriteLine($"Exceção interna: {ex.InnerException.Message}");
+                Console.WriteLine($"Stack trace interno: {ex.InnerException.StackTrace}");
+            }
+            throw;
+        }
     }
 
     public async Task UpdateAsync(Curso curso)
