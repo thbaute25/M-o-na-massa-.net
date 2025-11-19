@@ -1,0 +1,31 @@
+[
+  {
+    "usuarioId": "a4d5df1f-cf7b-4137-b931-b8ae9e9aafe2",
+    "descricao": "Eletricista com 10 anos de experiencia em instalacoes residenciais e comerciais."
+  },
+  {
+    "usuarioId": "cae7dcc3-6ce0-4405-98a0-97dfee5cddad",
+    "descricao": "Pintora profissional com experiencia em pintura residencial e comercial."
+  },
+  {
+    "usuarioId": "6c6dc9c9-a3b2-482e-b394-8037bcd5e3e7",
+    "descricao": "Encanador experiente em instalacoes hidraulicas residenciais e comerciais."
+  },
+  {
+    "usuarioId": "f2e203f0-fd60-4391-a313-8dfb7490b2c2",
+    "descricao": "Marceneira especializada em moveis sob medida e reformas."
+  },
+  {
+    "usuarioId": "4a5c2b2f-0079-4593-bd38-42fbb9b6e49f",
+    "descricao": "Aprendiz de eletrica buscando experiencia pratica."
+  },
+  {
+    "usuarioId": "a2f1d2a9-df3f-4a9e-812b-ed6cf3091fd0",
+    "descricao": "Aprendiz de pintura desenvolvendo habilidades profissionais."
+  },
+  {
+    "usuarioId": "478927a3-c2c1-4695-8003-ccf94548e5d2",
+    "descricao": "Aprendiz de encanamento em busca de oportunidades."
+  }
+]
+

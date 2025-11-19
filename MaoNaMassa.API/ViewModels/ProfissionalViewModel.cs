@@ -19,6 +19,9 @@ public class ProfissionalViewModel
     [Display(Name = "Cidade")]
     public string CidadeUsuario { get; set; } = string.Empty;
 
+    [Display(Name = "Área de Interesse")]
+    public string AreaInteresse { get; set; } = string.Empty;
+
     [Display(Name = "Descrição")]
     public string Descricao { get; set; } = string.Empty;
 
