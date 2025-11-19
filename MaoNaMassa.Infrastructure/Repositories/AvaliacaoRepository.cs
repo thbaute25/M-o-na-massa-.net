@@ -49,11 +49,14 @@ public class AvaliacaoRepository : IAvaliacaoRepository
 
     public async Task<decimal?> GetAvaliacaoMediaByServicoIdAsync(Guid servicoId)
     {
-        var media = await _context.Avaliacoes
+        var avaliacoes = await _context.Avaliacoes
             .Where(a => a.ServicoId == servicoId)
-            .AverageAsync(a => (decimal?)a.Nota);
+            .ToListAsync();
 
-        return media;
+        if (!avaliacoes.Any())
+            return null;
+
+        return avaliacoes.Average(a => (decimal)a.Nota);
     }
 
     public async Task<bool> UsuarioJaAvaliouServicoAsync(Guid usuarioId, Guid servicoId)

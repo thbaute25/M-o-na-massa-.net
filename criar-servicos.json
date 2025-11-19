@@ -1,0 +1,73 @@
+[
+  {
+    "profissionalId": "ff1fbf0c-2472-400c-9f49-987b5224fb56",
+    "titulo": "Instalacao de Chuveiro Eletrico",
+    "descricao": "Instalacao completa de chuveiro eletrico com seguranca e garantia. Inclui fiacao, disjuntor e teste de funcionamento.",
+    "cidade": "Sao Paulo",
+    "preco": 250.00
+  },
+  {
+    "profissionalId": "ff1fbf0c-2472-400c-9f49-987b5224fb56",
+    "titulo": "Instalacao de Tomadas e Interruptores",
+    "descricao": "Instalacao de tomadas e interruptores em toda a residencia. Trabalho limpo e organizado.",
+    "cidade": "Sao Paulo",
+    "preco": 150.00
+  },
+  {
+    "profissionalId": "7bdfc04b-7acc-41da-be09-5287072f72ef",
+    "titulo": "Pintura de Parede Interna",
+    "descricao": "Pintura profissional de paredes internas com preparacao de superficie, massa corrida e acabamento impecavel.",
+    "cidade": "Rio de Janeiro",
+    "preco": 35.00
+  },
+  {
+    "profissionalId": "7bdfc04b-7acc-41da-be09-5287072f72ef",
+    "titulo": "Pintura Externa com Impermeabilizacao",
+    "descricao": "Pintura externa com tratamento anti-umidade e impermeabilizacao. Garantia contra infiltracoes.",
+    "cidade": "Rio de Janeiro",
+    "preco": 45.00
+  },
+  {
+    "profissionalId": "a2b68d60-f6d8-4c3b-94e8-84d62595f3ed",
+    "titulo": "Desentupimento de Esgoto",
+    "descricao": "Desentupimento rapido e eficiente de esgotos e ralos. Equipamentos modernos e garantia de servico.",
+    "cidade": "Brasilia",
+    "preco": 120.00
+  },
+  {
+    "profissionalId": "a2b68d60-f6d8-4c3b-94e8-84d62595f3ed",
+    "titulo": "Instalacao de Torneira e Registro",
+    "descricao": "Instalacao de torneiras e registros com vedacao adequada. Sem vazamentos garantidos.",
+    "cidade": "Brasilia",
+    "preco": 80.00
+  },
+  {
+    "profissionalId": "e5836cce-a054-4147-81ea-35010c268f35",
+    "titulo": "Moveis Sob Medida",
+    "descricao": "Fabricacao de moveis sob medida para sua casa. Design personalizado e acabamento profissional.",
+    "cidade": "Curitiba",
+    "preco": 500.00
+  },
+  {
+    "profissionalId": "e5836cce-a054-4147-81ea-35010c268f35",
+    "titulo": "Instalacao de Prateleiras e Estantes",
+    "descricao": "Instalacao de prateleiras e estantes com fixacao segura. Ideal para organizacao de espacos.",
+    "cidade": "Curitiba",
+    "preco": 100.00
+  },
+  {
+    "profissionalId": "ae9ca52a-885d-46b1-9fac-af697fc18a25",
+    "titulo": "Reparo de Instalacao Eletrica",
+    "descricao": "Reparo e manutencao de instalacoes eletricas residenciais. Aprendiz em busca de experiencia.",
+    "cidade": "Sao Paulo",
+    "preco": 80.00
+  },
+  {
+    "profissionalId": "70247f33-e515-46a0-a292-acc8e69eaaf7",
+    "titulo": "Pintura de Portas e Janelas",
+    "descricao": "Pintura e acabamento de portas e janelas. Trabalho cuidadoso e detalhado.",
+    "cidade": "Rio de Janeiro",
+    "preco": 60.00
+  }
+]
+
